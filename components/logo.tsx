@@ -1,24 +1,41 @@
-import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 
-export const Logo = ({ className }: { className?: string }) => {
+import { cn } from "@/lib/utils";
+import { person } from "@/lib/site-content";
+
+export const Logo = ({
+  className,
+  light = false,
+}: {
+  className?: string;
+  /** Use light text (for dark backgrounds). */
+  light?: boolean;
+}) => {
   return (
-    <Link href="/" className={cn("", className)}>
-      <Image
-        src="/logo.webp"
-        height={50}
-        width={50}
-        alt="Logo"
-        className={cn("block dark:hidden", className)}
-      />
-      <Image
-        src="/logo-dark.webp"
-        height={50}
-        width={50}
-        alt="Logo"
-        className={cn("hidden dark:block", className)}
-      />
+    <Link
+      href="/"
+      aria-label={`${person.name} — home`}
+      className={cn(
+        "group inline-flex items-center gap-2.5 font-medium tracking-tight",
+        className,
+      )}
+    >
+      <span
+        className={cn(
+          "bg-primary text-natural-black inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold",
+          "transition-transform duration-200 group-hover:scale-105",
+        )}
+      >
+        HS
+      </span>
+      <span
+        className={cn(
+          "hidden text-sm sm:inline",
+          light ? "text-natural-white" : "text-natural-black",
+        )}
+      >
+        {person.name}
+      </span>
     </Link>
   );
 };

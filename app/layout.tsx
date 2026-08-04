@@ -1,7 +1,7 @@
 import { Geist_Mono, Inter, DM_Mono } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
-import { getSEO } from "@/lib/seo";
+import { getPersonJsonLd, getSEO } from "@/lib/seo";
 
 import "./globals.css";
 import { Footer } from "@/components/footer";
@@ -31,6 +31,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = getPersonJsonLd();
+
   return (
     <html lang="en">
       <body
@@ -41,6 +43,10 @@ export default function RootLayout({
           `bg-background relative font-sans antialiased`,
         )}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Navbar />
         {children}
         <Footer />

@@ -9,6 +9,16 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hassansrour.me",
   ogImage: "/assets/project-1.webp",
   twitter: person.linkedInHandle,
+  keywords: [
+    "Hassan Srour",
+    "Software Engineer",
+    "Full-stack developer",
+    "Next.js",
+    "React",
+    "Lebanon",
+    "Beirut",
+    "Web developer",
+  ],
 };
 
 export interface GetSEOOptions {
@@ -34,10 +44,12 @@ export function getSEO({
   description = siteConfig.description,
   path = "/",
   image = siteConfig.ogImage,
-  keywords,
+  keywords = siteConfig.keywords,
   noIndex = false,
 }: GetSEOOptions = {}): Metadata {
-  const resolvedTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
+  const resolvedTitle = title
+    ? `${title} | ${siteConfig.name}`
+    : `${siteConfig.name} — ${person.title}`;
   const url = new URL(path, siteConfig.url).toString();
 
   return {
@@ -88,5 +100,23 @@ export function getSEO({
             "max-video-preview": -1,
           },
         },
+  };
+}
+
+export function getPersonJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: person.name,
+    jobTitle: person.title,
+    email: person.email,
+    telephone: person.phone,
+    url: siteConfig.url,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Beirut",
+      addressCountry: "LB",
+    },
+    sameAs: [person.linkedIn, person.github],
   };
 }

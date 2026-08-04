@@ -37,7 +37,7 @@ export const Navbar = ({ className }: { className?: string | undefined }) => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex shrink-0 items-center gap-2 lg:min-w-45">
-            <Logo className="size-8" />
+            <Logo light={isDarkMode} />
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
@@ -69,7 +69,9 @@ export const Navbar = ({ className }: { className?: string | undefined }) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-white/80 hover:text-white"
+              className="p-2"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? (
                 <IconX
@@ -101,7 +103,7 @@ export const Navbar = ({ className }: { className?: string | undefined }) => {
               className="fixed inset-0 z-50 flex flex-col bg-neutral-900 md:hidden"
             >
               <div className="flex h-16 items-center justify-between px-4">
-                <Logo className="size-8" />
+                <Logo light />
                 <button
                   onClick={() => setIsMenuOpen(false)}
                   className="p-2 text-natural-white/80 hover:text-natural-white"

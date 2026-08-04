@@ -6,11 +6,13 @@ export const person = {
   phone: "+961 71 157 220",
   linkedIn: "https://linkedin.com/in/hassansrour1",
   linkedInHandle: "linkedin.com/in/hassansrour1",
+  github: "https://github.com/hassansrour099-cell",
+  githubHandle: "hassansrour099-cell",
 } as const;
 
 export const siteCopy = {
   tagline:
-    "Full-stack developer building and shipping production web apps — from REST APIs and databases to React/Next.js frontends and Dockerized deployments.",
+    "I design and ship production web apps — APIs, databases, React/Next.js UIs, and Dockerized deployments that hold up for real users.",
   heroHeadline: "Software engineer who ships for real users.",
   heroBadge: "Open to full-time & contract roles",
   footerCta: "Let’s build something that works in production.",
@@ -18,7 +20,7 @@ export const siteCopy = {
 } as const;
 
 export const professionalSummary =
-  "Full-stack software developer and final-year Software Engineering student with hands-on experience building and deploying production web applications for real users across multiple industries. Proficient in JavaScript, React, Next.js, PHP, Python, and SQL. Demonstrated ability to design and maintain REST APIs, improve system performance, and deliver reliable backend and frontend solutions — from containerized deployment to system architecture and database design.";
+  "Full-stack developer and final-year Software Engineering student. I build and deploy production web apps end to end — from REST APIs and databases to React/Next.js frontends, containerized services, and reliable release workflows across NGO, e-commerce, and operations platforms.";
 
 export const skillGroups = [
   {

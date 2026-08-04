@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Container } from "@/components/container";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { LinkedIn } from "@/components/icons/general";
+import { GitHub, LinkedIn } from "@/components/icons/general";
 import {
   education,
   experience,
@@ -75,13 +75,24 @@ export const AboutSection = () => {
                 <div className="text-natural-white/70 text-sm font-medium">
                   {person.location} · {person.email} · {person.phone}
                 </div>
-                <Link
-                  href={person.linkedIn}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <LinkedIn className="text-muted-foreground hover:text-natural-white size-4 transition-colors" />
-                </Link>
+                <div className="flex items-center gap-4">
+                  <Link
+                    href={person.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                  >
+                    <GitHub className="text-muted-foreground hover:text-natural-white size-4 transition-colors" />
+                  </Link>
+                  <Link
+                    href={person.linkedIn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    <LinkedIn className="text-muted-foreground hover:text-natural-white size-4 transition-colors" />
+                  </Link>
+                </div>
               </div>
               <span className="-tracking-xs text-lg leading-6.5 font-medium">
                 Hi, <span className="underline">I&apos;m Hassan.</span>{" "}

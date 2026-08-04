@@ -5,6 +5,7 @@ import { Container } from "@/components/container";
 import {
   ArrowRightLongerIcon,
   CopyRightIcon,
+  GitHub,
   LinkedIn,
 } from "@/components/icons/general";
 import { Button } from "@/components/button";
@@ -21,6 +22,7 @@ const data = {
   Contact: [
     { label: "Email", href: `mailto:${person.email}` },
     { label: "LinkedIn", href: person.linkedIn },
+    { label: "GitHub", href: person.github },
     { label: "Phone", href: `tel:${person.phone.replace(/\s/g, "")}` },
   ],
 };
@@ -65,7 +67,7 @@ export const Footer = () => {
         <div className="relative z-10 flex flex-col items-center justify-center gap-18">
           <div className="grid w-full grid-cols-1 gap-15 lg:grid-cols-2 lg:gap-0">
             <div className="flex flex-col gap-4">
-              <Logo className="size-8" />
+              <Logo light />
               <span className="text-muted-foreground text-sm leading-5">
                 {siteCopy.tagline}
               </span>
@@ -105,7 +107,20 @@ export const Footer = () => {
               </span>
             </div>
             <div className="flex items-center gap-5">
-              <Link href={person.linkedIn} target="_blank" rel="noopener noreferrer">
+              <Link
+                href={person.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <GitHub className="text-muted-foreground hover:text-natural-white size-4 transition-colors" />
+              </Link>
+              <Link
+                href={person.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
                 <LinkedIn className="text-muted-foreground hover:text-natural-white size-4 transition-colors" />
               </Link>
             </div>

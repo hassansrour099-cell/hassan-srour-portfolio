@@ -7,7 +7,7 @@ export const siteConfig = {
   description: siteCopy.tagline,
   // Override in production via NEXT_PUBLIC_SITE_URL.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hassansrour.me",
-  ogImage: "/assets/project-1.webp",
+  ogImage: "/assets/hassan.jpg",
   twitter: person.linkedInHandle,
   keywords: [
     "Hassan Srour",

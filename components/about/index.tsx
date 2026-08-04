@@ -56,11 +56,12 @@ export const AboutSection = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <Image
-              src={"/assets/workers.webp"}
+              src={"/assets/hassan.jpg"}
               alt="Hassan Srour"
               width={1200}
               height={1200}
-              className="w-full rounded-lg transition-transform duration-700 ease-out hover:scale-[1.03]"
+              className="w-full rounded-lg object-cover object-top transition-transform duration-700 ease-out hover:scale-[1.03]"
+              priority
             />
           </motion.div>
           <motion.div

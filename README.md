@@ -1,6 +1,6 @@
 # Hassan Srour — Portfolio
 
-Personal portfolio site built with Next.js.
+Personal portfolio site for [hassansrour.me](https://hassansrour.me).
 
 ## Getting Started
 
@@ -17,3 +17,11 @@ Open [http://localhost:3000](http://localhost:3000).
 - `/work` — Full project list
 
 Update copy and projects in `lib/site-content.ts`.
+
+## Deploy
+
+Connected to Vercel from this GitHub repo. Set:
+
+```
+NEXT_PUBLIC_SITE_URL=https://hassansrour.me
+```

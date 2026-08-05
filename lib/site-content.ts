@@ -37,7 +37,7 @@ export const skillGroups = [
   },
   {
     label: "Data & ops",
-    items: ["MySQL", "Firebase", "Docker", "GitHub Actions", "Vercel", "CI/CD"],
+    items: ["MySQL", "Firebase", "Docker", "Medusa", "GitHub Actions", "Vercel", "CI/CD"],
   },
 ] as const;
 
@@ -78,6 +78,30 @@ export const languages = ["Arabic", "English", "French"] as const;
 export const portfolioProjects = [
   {
     src: "/assets/project-1.webp",
+    alt: "Urban Compact furniture storefront built with Medusa and Next.js",
+    width: 2400,
+    height: 1564,
+    className: "col-span-14 md:col-span-7 lg:col-span-9",
+    title: "Urban Compact",
+    summary:
+      "Editorial furniture commerce demo — Medusa v2 backend, Next.js storefront, room-based catalog, and Dockerized Contabo deployment with Nginx + SSL.",
+    category: "Medusa · Next.js · Docker",
+    href: "https://urban.hassansrour.me",
+  },
+  {
+    src: "/assets/project-2.webp",
+    alt: "Performance Street athletic storefront with cyberpunk UI",
+    width: 1248,
+    height: 1320,
+    className: "col-span-14 md:col-span-7 lg:col-span-5",
+    title: "Performance Street",
+    summary:
+      "Technical athletic storefront — activity-based kit (Training, Running, Recovery), Medusa v2 API, and production deploy on Contabo alongside Urban Compact.",
+    category: "Medusa · Next.js · VPS",
+    href: "https://street.hassansrour.me",
+  },
+  {
+    src: "/assets/project-3.webp",
     alt: "NGO platform built with Next.js and Directus",
     width: 2400,
     height: 1564,
@@ -89,9 +113,9 @@ export const portfolioProjects = [
     href: person.linkedIn,
   },
   {
-    src: "/assets/project-2.webp",
+    src: "/assets/project-4.webp",
     alt: "ERPNext customization for NGO operations",
-    width: 1248,
+    width: 1824,
     height: 1320,
     className: "col-span-14 md:col-span-7 lg:col-span-5",
     title: "ERPNext for NGO operations",
@@ -111,17 +135,5 @@ export const portfolioProjects = [
       "White-label Arabic publishing and bookstore template — admin dashboard for storefront layouts, catalog, authors, and categories.",
     category: "Full-stack · E-commerce",
     href: "https://daralrafidain.com",
-  },
-  {
-    src: "/assets/project-4.webp",
-    alt: "Search and catalog integrations",
-    width: 1824,
-    height: 1320,
-    className: "group relative col-span-14 md:col-span-7 lg:col-span-7",
-    title: "Book search integrations",
-    summary:
-      "Third-party search APIs for book and author discovery with optimized routing and validated integrations via Postman.",
-    category: "APIs · Performance",
-    href: person.linkedIn,
   },
 ] as const;

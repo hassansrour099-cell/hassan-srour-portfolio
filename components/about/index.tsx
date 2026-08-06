@@ -148,7 +148,7 @@ export const AboutSection = () => {
                       </div>
                       <ul className="text-natural-white/80 list-disc space-y-2 pl-4 text-sm leading-6">
                         {job.highlights.map((item) => (
-                          <li key={item} className="max-w-[48ch]">
+                          <li key={item} className="max-w-[58ch]">
                             {item}
                           </li>
                         ))}
@@ -194,6 +194,9 @@ export const AboutSection = () => {
                   </p>
                   <p className="text-natural-white/55 text-sm">
                     {education.year}
+                  </p>
+                  <p className="text-natural-white/70 max-w-[42ch] text-sm leading-6">
+                    {education.note}
                   </p>
                 </div>
                 <div className="space-y-2">

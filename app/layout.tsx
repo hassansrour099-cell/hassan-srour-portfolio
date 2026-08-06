@@ -1,4 +1,4 @@
-import { Geist_Mono, Inter, DM_Mono } from "next/font/google";
+import { Geist_Mono, Inter, DM_Mono, Instrument_Sans } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
 import { getPersonJsonLd, getSEO } from "@/lib/seo";
@@ -12,6 +12,12 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   weight: ["400", "500", "600", "700", "800"],
+});
+
+const instrument = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument",
+  weight: ["500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -38,6 +44,7 @@ export default function RootLayout({
       <body
         className={cn(
           inter.variable,
+          instrument.variable,
           geistMono.variable,
           DMMono.variable,
           `bg-background relative font-sans antialiased`,

@@ -46,7 +46,7 @@ export const Navbar = ({ className }: { className?: string | undefined }) => {
                   key={item.label}
                   href={item.href}
                   className={cn(
-                    "px-3 py-2 text-sm font-medium transition-colors duration-200",
+                    "inline-flex min-h-11 items-center px-3 py-2 text-sm font-medium transition-colors duration-250",
                     isDarkMode
                       ? "text-natural-white/80 hover:text-natural-white"
                       : "text-natural-black/80 hover:text-natural-black",
@@ -61,7 +61,12 @@ export const Navbar = ({ className }: { className?: string | undefined }) => {
           {/* Desktop Navigation */}
 
           {/* Desktop CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden items-center gap-2 md:flex">
+            <Button
+              text="CV"
+              href="/Hassan_Srour_CV.pdf"
+              download="Hassan_Srour_CV.pdf"
+            />
             <Button />
           </div>
 
@@ -123,7 +128,12 @@ export const Navbar = ({ className }: { className?: string | undefined }) => {
                     {item.label}
                   </Link>
                 ))}
-                <div className="px-3 pt-4">
+                <div className="flex flex-col gap-3 px-3 pt-4">
+                  <Button
+                    text="Download CV"
+                    href="/Hassan_Srour_CV.pdf"
+                    download="Hassan_Srour_CV.pdf"
+                  />
                   <Button />
                 </div>
               </div>

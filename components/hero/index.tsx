@@ -4,7 +4,7 @@ import { Container } from "@/components/container";
 import { Button } from "@/components/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { person, siteCopy } from "@/lib/site-content";
 
 const stars = [
@@ -21,10 +21,20 @@ const stars = [
 ];
 
 export const Hero = () => {
+  const reduce = useReducedMotion();
+
+  const fade = (delay: number) =>
+    reduce
+      ? undefined
+      : {
+          initial: { opacity: 0, y: 14 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.45, delay, ease: "easeOut" as const },
+        };
+
   return (
-    <div className="h-[60vh] w-full p-2 md:h-screen">
-      <div className="text-natural-white relative m-0 h-full w-full overflow-hidden rounded-3xl bg-black">
-        {/* Grid atmosphere */}
+    <div className="w-full p-2 md:h-screen">
+      <div className="text-natural-white relative m-0 flex min-h-[min(92dvh,52rem)] w-full flex-col overflow-hidden rounded-3xl bg-black md:h-full md:min-h-0">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-40"
@@ -39,7 +49,6 @@ export const Hero = () => {
           }}
         />
 
-        {/* Warm horizon glow — CSS only, GPU-friendly */}
         <div
           aria-hidden
           className="hero-glow pointer-events-none absolute bottom-[-10%] left-1/2 h-[55%] w-[90%] max-w-5xl -translate-x-1/2 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(255,204,0,0.35)_0%,rgba(250,154,99,0.12)_35%,transparent_70%)]"
@@ -53,7 +62,6 @@ export const Hero = () => {
           }}
         />
 
-        {/* Twinkling stars */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           {stars.map((star, i) => (
             <span
@@ -76,66 +84,64 @@ export const Hero = () => {
           className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black via-black/50 to-transparent"
         />
 
-        <Container className="relative z-10 flex h-full flex-col justify-between">
-          <div className="pt-32 md:pt-42 lg:pt-75">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
+        <Container className="relative z-10 flex flex-1 flex-col justify-between pb-8 md:h-full md:pb-0">
+          <div className="pt-28 sm:pt-32 md:pt-42 lg:pt-75">
+            <motion.div {...fade(0)}>
               <Link
                 href={person.linkedIn}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex w-fit rounded-full bg-neutral-900/90 p-1 shadow-lg shadow-black ring-1 ring-white/10 backdrop-blur-sm transition-colors hover:bg-neutral-800"
+                className="flex w-fit max-w-full rounded-full bg-neutral-900/90 p-1 shadow-lg shadow-black ring-1 ring-white/15 backdrop-blur-sm transition-colors duration-250 hover:bg-neutral-800 hover:ring-white/25"
               >
-                <div className="flex items-center gap-1 sm:gap-2">
-                  <div className="rounded-full bg-neutral-950 px-2 py-1 text-[10px] sm:text-xs">
+                <div className="flex min-w-0 flex-wrap items-center gap-1 sm:flex-nowrap sm:gap-2">
+                  <div className="shrink-0 rounded-full bg-primary px-2.5 py-1 text-[10px] font-semibold tracking-wide text-black sm:text-xs">
                     {person.title}
                   </div>
-                  <div className="text-natural-white rounded-full pr-2 text-[10px] sm:text-xs">
+                  <div className="text-natural-white min-w-0 rounded-full pr-2.5 text-[10px] leading-snug font-medium sm:text-xs">
                     {siteCopy.heroBadge}
                   </div>
                 </div>
               </Link>
             </motion.div>
 
-            <div className="mt-6 flex flex-col items-start gap-6 md:mt-10 lg:flex-row lg:gap-10">
+            <div className="mt-6 flex flex-col items-start gap-6 md:mt-10 lg:flex-row lg:items-end lg:gap-12">
               <motion.h1
-                className="text-natural-white -tracking-xl text-3xl font-semibold text-balance sm:text-4xl md:text-5xl lg:text-7xl"
-                initial={{ opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, delay: 0.12, ease: "easeOut" }}
+                className="font-display text-natural-white -tracking-xl max-w-4xl text-4xl font-semibold text-balance sm:text-5xl md:text-6xl lg:text-[5.25rem] lg:leading-[1.02]"
+                {...fade(0.1)}
               >
                 {siteCopy.heroHeadline}
               </motion.h1>
               <motion.div
-                className="lg:max-w-md"
-                initial={{ opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, delay: 0.28, ease: "easeOut" }}
+                className="relative z-20 w-full max-w-md lg:pb-1"
+                {...fade(0.22)}
               >
-                <h2 className="text-sm font-medium text-balance text-neutral-300 sm:text-base lg:text-lg">
+                <h2 className="max-w-[38ch] text-sm leading-relaxed font-medium text-balance text-neutral-300 sm:text-base lg:text-lg lg:leading-7">
                   {siteCopy.tagline}
                 </h2>
-                <Button
-                  containerClassName="mt-6 md:mt-8"
-                  text="Email Hassan"
-                />
+                <div className="mt-6 flex flex-wrap items-center gap-3 md:mt-8">
+                  <Button text="Email Hassan" />
+                  <Button
+                    text="Download CV"
+                    href="/Hassan_Srour_CV.pdf"
+                    download="Hassan_Srour_CV.pdf"
+                    containerClassName="border-white/15 bg-transparent hover:bg-white/5"
+                  />
+                </div>
               </motion.div>
             </div>
           </div>
 
           <motion.div
-            className="relative h-18 sm:h-48 md:h-72"
-            initial={{ opacity: 0 }}
+            className="pointer-events-none relative z-0 mt-10 h-14 shrink-0 overflow-hidden sm:mt-0 sm:h-40 md:h-72"
+            aria-hidden
+            initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.45 }}
+            transition={{ duration: 0.7, delay: reduce ? 0 : 0.4 }}
           >
             <p
               className={cn(
                 "from-natural-white/15 -tracking-xl to-heading/0 bg-linear-to-r bg-clip-text text-transparent",
-                "absolute -top-10 left-1/2 -translate-x-1/2 text-center text-[100px] font-semibold sm:text-[6rem] md:-top-6 md:mt-10 md:text-[160px] lg:-top-18 lg:text-[300px]",
+                "font-display absolute top-0 left-1/2 -translate-x-1/2 text-center text-[72px] leading-none font-semibold sm:text-[6rem] md:top-6 md:text-[160px] lg:-top-10 lg:text-[300px]",
               )}
             >
               {person.name.split(" ")[0]}

@@ -24,6 +24,7 @@ const data = {
     { label: "LinkedIn", href: person.linkedIn },
     { label: "GitHub", href: person.github },
     { label: "Phone", href: `tel:${person.phone.replace(/\s/g, "")}` },
+    { label: "Download CV", href: "/Hassan_Srour_CV.pdf" },
   ],
 };
 
@@ -51,13 +52,14 @@ export const Footer = () => {
             {person.name.split(" ")[0]}
           </div>
           <div className="absolute inset-0 flex h-fit w-full flex-col items-start justify-between px-6 pt-10 md:flex-row md:px-15 md:pt-16">
-            <div className="text-natural-white -tracking-lg w-full max-w-135 justify-center text-[32px] font-medium md:text-5xl md:leading-14 lg:text-[56px] lg:leading-16">
+            <div className="font-display text-natural-white -tracking-lg w-full max-w-135 justify-center text-[32px] font-medium md:text-5xl md:leading-14 lg:text-[56px] lg:leading-16">
               {siteCopy.footerCta}
             </div>
-            <div className="inline-flex w-16 flex-col items-start justify-start gap-2.5 py-6">
+            <div className="flex shrink-0 flex-col items-start justify-start gap-2.5 py-6 md:py-0">
               <Link
                 href={`mailto:${person.email}`}
-                className="bg-natural-white shadow-card-md inline-flex items-center justify-center gap-2.5 self-stretch rounded-xl px-6 py-2"
+                aria-label="Email Hassan"
+                className="bg-natural-white shadow-card-md inline-flex size-14 items-center justify-center rounded-xl transition-transform duration-250 hover:scale-105"
               >
                 <ArrowRightLongerIcon className="scale-150" />
               </Link>
@@ -86,7 +88,7 @@ export const Footer = () => {
                       <li key={index}>
                         <Link
                           href={item.href}
-                          className="text-natural-white -tracking-sm text-sm leading-5 font-medium hover:underline"
+                          className="text-natural-white/85 -tracking-sm inline-flex min-h-11 items-center text-sm leading-5 font-medium transition-colors duration-250 hover:text-natural-white hover:underline"
                         >
                           {item.label}
                         </Link>

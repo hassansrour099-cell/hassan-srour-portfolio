@@ -11,7 +11,7 @@ export const PageHeader = ({
     <h2
       className={cn(
         "absolute top-20 overflow-hidden opacity-25 md:top-30 lg:top-50",
-        "-tracking-xl text-page-header font-medium md:text-page-header-md lg:text-page-header-lg",
+        "font-display -tracking-xl text-page-header font-medium md:text-page-header-md lg:text-page-header-lg",
         "bg-linear-180 from-[#8C8879] to-transparent bg-clip-text text-transparent",
         className,
       )}

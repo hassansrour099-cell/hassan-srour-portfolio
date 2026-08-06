@@ -21,7 +21,7 @@ export const siteCopy = {
 } as const;
 
 export const professionalSummary =
-  "I’m a full-stack developer and final-year Software Engineering student. Day to day I own the path from schema and REST APIs to React/Next.js interfaces, containerized services, and release workflows — across NGO platforms, e-commerce, and operations tooling.";
+  "Full-stack software developer and final-year Software Engineering student with hands-on experience building and deploying production web applications for real users across multiple industries. Proficient in JavaScript, React, Next.js, PHP, Python, and SQL. Demonstrated ability to design and maintain REST APIs, improve system performance, and deliver reliable backend and frontend solutions, from containerized deployment to system architecture and database design.";
 
 export const skillGroups = [
   {
@@ -30,15 +30,19 @@ export const skillGroups = [
   },
   {
     label: "Frontend",
-    items: ["React", "Vue", "Next.js", "Responsive UI"],
+    items: ["React", "Vue", "Next.js", "Responsive Web Design"],
   },
   {
     label: "Backend",
     items: ["Laravel", "Flask", "WordPress", "Directus", "ERPNext"],
   },
   {
-    label: "Data & ops",
-    items: ["MySQL", "Firebase", "Docker", "Medusa", "GitHub Actions", "Vercel", "CI/CD"],
+    label: "Databases",
+    items: ["MySQL", "Firebase"],
+  },
+  {
+    label: "DevOps",
+    items: ["GitHub Actions", "Git", "CI/CD Pipelines", "Vercel", "Docker"],
   },
 ] as const;
 
@@ -46,12 +50,13 @@ export const experience = [
   {
     role: "Software Engineer",
     company: "Harmonically Labs",
-    location: "Bucharest, Romania (remote)",
+    location: "Bucharest, Romania",
     period: "Apr 2024 — Present",
     highlights: [
-      "Built and maintained multi-client NGO web platforms with Next.js, Directus, and Docker across Lebanon and the Gulf.",
-      "Configured ERPNext for NGO workflows spanning inventory tracking and operational records.",
-      "Deployed production apps on Ubuntu VPS and Vercel with containerized services and repeatable release workflows.",
+      "Built and maintained web platforms for NGO clients across Lebanon and the Gulf region using Next.js for the frontend and Directus as a headless CMS/backend, containerized with Docker for consistent local and production environments.",
+      "Configured and customized ERPNext deployments to support NGO operational workflows, including inventory and records management.",
+      "Deployed and managed production applications across VPS (Ubuntu) and Vercel, handling environment configuration, containerized services, and release workflows.",
+      "Collaborated directly with NGO stakeholders to translate operational requirements into functioning, deployed systems.",
     ],
   },
   {
@@ -60,9 +65,8 @@ export const experience = [
     location: "Beirut, Lebanon",
     period: "Nov 2023 — Apr 2024",
     highlights: [
-      "Shipped a white-label e-commerce template live at daralrafidain.com as one of two developers.",
-      "Built admin dashboard tooling for dynamic storefront layouts, catalog views, and responsive UI.",
-      "Integrated third-party search APIs and improved data processing speed by ~10% with lower backend latency.",
+      "Developed a white-label e-commerce platform template deployed for Dar Al-Rafidain (daralrafidain.com), a live Arabic-language publishing and bookstore, as one of two developers — building the admin dashboard template system for dynamic storefront layout control, plus book listing, author/category views, and responsive UI components across the full stack.",
+      "Integrated third-party search APIs for book and author discovery, optimizing request routing and data processing across frontend and backend to achieve a 10% improvement in data processing speed and reduced backend latency, validating all integrations via Postman throughout development.",
     ],
   },
 ] as const;
@@ -70,8 +74,8 @@ export const experience = [
 export const education = {
   degree: "B.Sc. Software Engineering",
   school: "Antonine University, Baabda, Lebanon",
-  year: "2026 (expected)",
-  note: "Coursework: data structures, algorithms, OOP (C++/Java), mobile dev, AI (Python), databases (PHP), web dev, networks.",
+  year: "2026",
+  note: "Relevant coursework: Data Structures, Algorithms, Object-Oriented Programming (C++, Java), Mobile Development, Artificial Intelligence (Python), Database Systems (PHP), Web Development, Computer Networks.",
 } as const;
 
 export const languages = ["Arabic", "English", "French"] as const;

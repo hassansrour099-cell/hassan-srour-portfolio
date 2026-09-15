@@ -6,6 +6,7 @@ export const person = {
   phone: "+961 71 157 220",
   linkedIn: "https://linkedin.com/in/hassansrour1",
   linkedInHandle: "linkedin.com/in/hassansrour1",
+  cvPath: "/Hassan_Srour_CV.pdf",
 } as const;
 
 export const siteCopy = {
@@ -122,150 +123,8 @@ export type ProjectCase = {
   result: string;
 };
 
-export const portfolioProjects: ProjectCase[] = [
-  {
-    slug: "ngo-platforms",
-    title: "NGO web platforms",
-    summary:
-      "Next.js frontends and Directus CMS for NGO clients in Lebanon and the Gulf, with Docker for consistent local and production environments.",
-    year: "2024 to Present",
-    type: "Web platforms",
-    role: "Full-stack engineer at Harmonically Labs",
-    stack: ["Next.js", "Directus", "Docker", "Vercel", "Ubuntu VPS"],
-    highlight: "CMS-backed sites with deploy parity",
-    overview:
-      "Ongoing platform work for NGO clients who need public websites and editable content, delivered as Next.js applications backed by Directus.",
-    problem:
-      "Each organization needed a maintainable site and a content workflow editors could run. Environments also had to stay predictable between local development and production hosts.",
-    approach:
-      "Use Next.js for the public site, Directus as the headless CMS, and Docker so services behave the same locally and in production. Translate stakeholder requirements into content models and shipped pages.",
-    architecture: [
-      "Editors and stakeholders",
-      "Directus (content, roles, collections)",
-      "Next.js frontend",
-      "Vercel or Ubuntu VPS (Docker where used)",
-    ],
-    implementation: [
-      "Next.js frontends shaped around each client content model.",
-      "Directus collections and roles for editors and operators.",
-      "Dockerized services for consistent local and production runs.",
-      "Collaboration with NGO stakeholders to turn operational needs into pages and workflows.",
-    ],
-    challenges:
-      "Requirements differ by organization, and hosting spans VPS and Vercel. Keeping environments consistent without slowing releases was the recurring constraint.",
-    decisions:
-      "Chose a headless CMS over rebuilding admin UI for every client. Accepted Docker overhead in exchange for fewer environment surprises at deploy time.",
-    result:
-      "Production NGO platforms maintained with a clear path from content change to deploy across Lebanon and the Gulf clients.",
-  },
-  {
-    slug: "erpnext-ngo",
-    title: "ERPNext for NGO operations",
-    summary:
-      "ERPNext configuration and customization for NGO inventory and records workflows, hosted on Ubuntu VPS.",
-    year: "2024 to Present",
-    type: "ERP / operations",
-    role: "Configuration and customization at Harmonically Labs",
-    stack: ["ERPNext", "Ubuntu", "VPS"],
-    highlight: "Operational workflows inside ERPNext",
-    overview:
-      "ERPNext setups for NGO operational needs such as inventory and records management, hosted and maintained on Ubuntu VPS.",
-    problem:
-      "Operational work needed a structured system. Off-the-shelf ERP only helps if modules and setup match how staff actually work day to day.",
-    approach:
-      "Configure and customize ERPNext against real operational workflows, then host it on Ubuntu VPS with careful environment and service setup.",
-    architecture: [
-      "NGO operators",
-      "ERPNext modules (inventory, records)",
-      "Ubuntu VPS",
-    ],
-    implementation: [
-      "Inventory and records configuration aligned to NGO processes.",
-      "Ubuntu VPS provisioning and service configuration.",
-      "Iteration with operators after initial go-live.",
-    ],
-    challenges:
-      "Too little customization and staff ignore the system. Too much and upgrades and maintenance become fragile.",
-    decisions:
-      "Prefer configuration and targeted customization over heavy forks, so the deployment stays maintainable on VPS.",
-    result:
-      "ERPNext instances in use for day-to-day NGO operational workflows.",
-  },
-  {
-    slug: "dar-al-rafidain",
-    title: "Dar Al-Rafidain e-commerce",
-    summary:
-      "Live Arabic publishing and bookstore storefront, built from a white-label e-commerce template with admin-controlled layouts and catalog views.",
-    year: "2023 to 2024",
-    type: "E-commerce",
-    role: "Full-stack developer (team of two) at Brain Solutions",
-    stack: ["E-commerce template", "Admin dashboard", "Catalog UI"],
-    highlight: "Live storefront with layout admin",
-    externalHref: "https://daralrafidain.com",
-    relatedNote:
-      "Search API work from the same role is documented separately under Book search integrations.",
-    overview:
-      "A white-label e-commerce template deployed for Dar Al-Rafidain, an Arabic-language publishing and bookstore, live at daralrafidain.com.",
-    problem:
-      "The business needed a catalog-facing storefront and an admin path to change storefront layout without a full redeploy for every adjustment.",
-    approach:
-      "As one of two developers, I focused on the admin dashboard template system for dynamic storefront layout control, plus book listing, author, and category views and responsive UI components.",
-    architecture: [
-      "Store operators (admin dashboard)",
-      "Layout and catalog configuration",
-      "Public Arabic storefront",
-      "Catalog: books, authors, categories",
-    ],
-    implementation: [
-      "Admin dashboard for dynamic storefront layout control.",
-      "Book listing, author, and category views.",
-      "Responsive UI components across the storefront.",
-    ],
-    challenges:
-      "Layout needed to stay flexible for operators while the public Arabic storefront stayed coherent and usable.",
-    decisions:
-      "Invest in admin layout control so content and presentation changes do not always require engineering releases.",
-    result:
-      "A live Arabic bookstore and publishing storefront with catalog browsing and admin-driven layout control.",
-  },
-  {
-    slug: "book-search",
-    title: "Book search integrations",
-    summary:
-      "Third-party search API integration for books and authors on the e-commerce stack, with request routing improvements validated in Postman.",
-    year: "2023 to 2024",
-    type: "API integrations",
-    role: "Full-stack developer at Brain Solutions",
-    stack: ["Third-party search APIs", "Postman"],
-    highlight: "About 10% faster data processing",
-    relatedNote:
-      "Part of the Dar Al-Rafidain / white-label e-commerce work at Brain Solutions.",
-    overview:
-      "Search integrations for book and author discovery across frontend and backend on the e-commerce project.",
-    problem:
-      "Discovery depended on third-party search APIs. Inefficient request routing increased backend work and slowed data processing.",
-    approach:
-      "Integrate the search APIs, optimize request routing and data processing across frontend and backend, and validate integrations with Postman throughout development.",
-    architecture: [
-      "Storefront or admin client",
-      "Application backend (request routing)",
-      "Third-party search APIs",
-      "Book and author results",
-    ],
-    implementation: [
-      "Third-party search API integration for books and authors.",
-      "Request routing and data processing changes across frontend and backend.",
-      "Postman validation of integrations during development.",
-      "Measured about 10% improvement in data processing speed and reduced backend latency.",
-    ],
-    challenges:
-      "External APIs vary in behavior. The work was to cut unnecessary processing and keep responses reliable under catalog use.",
-    decisions:
-      "Treat contract validation (Postman) as part of development, not an afterthought, so routing changes stay honest against the real API.",
-    result:
-      "Faster book and author discovery paths with integrations checked before they carried production traffic.",
-  },
-  {
+export const portfolioProjects: ProjectCase[
+{
     slug: "urban-compact",
     title: "Urban Compact",
     summary:
@@ -302,7 +161,7 @@ export const portfolioProjects: ProjectCase[] = [
     result:
       "Live furniture storefront at https://urban.hassansrour.me/dk.",
   },
-  {
+{
     slug: "performance-street",
     title: "Performance Street",
     summary:
@@ -339,6 +198,149 @@ export const portfolioProjects: ProjectCase[] = [
     result:
       "Live athletic apparel storefront at https://street.hassansrour.me/dk.",
   },
+{
+    slug: "ngo-platforms",
+    title: "NGO web platforms",
+    summary:
+      "Next.js frontends and Directus CMS for NGO clients in Lebanon and the Gulf, with Docker for consistent local and production environments.",
+    year: "2024 to Present",
+    type: "Web platforms",
+    role: "Full-stack engineer at Harmonically Labs",
+    stack: ["Next.js", "Directus", "Docker", "Vercel", "Ubuntu VPS"],
+    highlight: "CMS-backed sites with deploy parity",
+    overview:
+      "Ongoing platform work for NGO clients who need public websites and editable content, delivered as Next.js applications backed by Directus.",
+    problem:
+      "Each organization needed a maintainable site and a content workflow editors could run. Environments also had to stay predictable between local development and production hosts.",
+    approach:
+      "Use Next.js for the public site, Directus as the headless CMS, and Docker so services behave the same locally and in production. Translate stakeholder requirements into content models and shipped pages.",
+    architecture: [
+      "Editors and stakeholders",
+      "Directus (content, roles, collections)",
+      "Next.js frontend",
+      "Vercel or Ubuntu VPS (Docker where used)",
+    ],
+    implementation: [
+      "Next.js frontends shaped around each client content model.",
+      "Directus collections and roles for editors and operators.",
+      "Dockerized services for consistent local and production runs.",
+      "Collaboration with NGO stakeholders to turn operational needs into pages and workflows.",
+    ],
+    challenges:
+      "Requirements differ by organization, and hosting spans VPS and Vercel. Keeping environments consistent without slowing releases was the recurring constraint.",
+    decisions:
+      "Chose a headless CMS over rebuilding admin UI for every client. Accepted Docker overhead in exchange for fewer environment surprises at deploy time.",
+    result:
+      "Production NGO platforms maintained with a clear path from content change to deploy across Lebanon and the Gulf clients.",
+  },
+{
+    slug: "erpnext-ngo",
+    title: "ERPNext for NGO operations",
+    summary:
+      "ERPNext configuration and customization for NGO inventory and records workflows, hosted on Ubuntu VPS.",
+    year: "2024 to Present",
+    type: "ERP / operations",
+    role: "Configuration and customization at Harmonically Labs",
+    stack: ["ERPNext", "Ubuntu", "VPS"],
+    highlight: "Operational workflows inside ERPNext",
+    overview:
+      "ERPNext setups for NGO operational needs such as inventory and records management, hosted and maintained on Ubuntu VPS.",
+    problem:
+      "Operational work needed a structured system. Off-the-shelf ERP only helps if modules and setup match how staff actually work day to day.",
+    approach:
+      "Configure and customize ERPNext against real operational workflows, then host it on Ubuntu VPS with careful environment and service setup.",
+    architecture: [
+      "NGO operators",
+      "ERPNext modules (inventory, records)",
+      "Ubuntu VPS",
+    ],
+    implementation: [
+      "Inventory and records configuration aligned to NGO processes.",
+      "Ubuntu VPS provisioning and service configuration.",
+      "Iteration with operators after initial go-live.",
+    ],
+    challenges:
+      "Too little customization and staff ignore the system. Too much and upgrades and maintenance become fragile.",
+    decisions:
+      "Prefer configuration and targeted customization over heavy forks, so the deployment stays maintainable on VPS.",
+    result:
+      "ERPNext instances in use for day-to-day NGO operational workflows.",
+  },
+{
+    slug: "dar-al-rafidain",
+    title: "Dar Al-Rafidain e-commerce",
+    summary:
+      "Live Arabic publishing and bookstore storefront, built from a white-label e-commerce template with admin-controlled layouts and catalog views.",
+    year: "2023 to 2024",
+    type: "E-commerce",
+    role: "Full-stack developer (team of two) at Brain Solutions",
+    stack: ["E-commerce template", "Admin dashboard", "Catalog UI"],
+    highlight: "Live storefront with layout admin",
+    externalHref: "https://daralrafidain.com",
+    relatedNote:
+      "Search API work from the same role is documented separately under Book search integrations.",
+    overview:
+      "A white-label e-commerce template deployed for Dar Al-Rafidain, an Arabic-language publishing and bookstore, live at daralrafidain.com.",
+    problem:
+      "The business needed a catalog-facing storefront and an admin path to change storefront layout without a full redeploy for every adjustment.",
+    approach:
+      "As one of two developers, I focused on the admin dashboard template system for dynamic storefront layout control, plus book listing, author, and category views and responsive UI components.",
+    architecture: [
+      "Store operators (admin dashboard)",
+      "Layout and catalog configuration",
+      "Public Arabic storefront",
+      "Catalog: books, authors, categories",
+    ],
+    implementation: [
+      "Admin dashboard for dynamic storefront layout control.",
+      "Book listing, author, and category views.",
+      "Responsive UI components across the storefront.",
+    ],
+    challenges:
+      "Layout needed to stay flexible for operators while the public Arabic storefront stayed coherent and usable.",
+    decisions:
+      "Invest in admin layout control so content and presentation changes do not always require engineering releases.",
+    result:
+      "A live Arabic bookstore and publishing storefront with catalog browsing and admin-driven layout control.",
+  },
+{
+    slug: "book-search",
+    title: "Book search integrations",
+    summary:
+      "Third-party search API integration for books and authors on the e-commerce stack, with request routing improvements validated in Postman.",
+    year: "2023 to 2024",
+    type: "API integrations",
+    role: "Full-stack developer at Brain Solutions",
+    stack: ["Third-party search APIs", "Postman"],
+    highlight: "About 10% faster data processing",
+    relatedNote:
+      "Part of the Dar Al-Rafidain / white-label e-commerce work at Brain Solutions.",
+    overview:
+      "Search integrations for book and author discovery across frontend and backend on the e-commerce project.",
+    problem:
+      "Discovery depended on third-party search APIs. Inefficient request routing increased backend work and slowed data processing.",
+    approach:
+      "Integrate the search APIs, optimize request routing and data processing across frontend and backend, and validate integrations with Postman throughout development.",
+    architecture: [
+      "Storefront or admin client",
+      "Application backend (request routing)",
+      "Third-party search APIs",
+      "Book and author results",
+    ],
+    implementation: [
+      "Third-party search API integration for books and authors.",
+      "Request routing and data processing changes across frontend and backend.",
+      "Postman validation of integrations during development.",
+      "Measured about 10% improvement in data processing speed and reduced backend latency.",
+    ],
+    challenges:
+      "External APIs vary in behavior. The work was to cut unnecessary processing and keep responses reliable under catalog use.",
+    decisions:
+      "Treat contract validation (Postman) as part of development, not an afterthought, so routing changes stay honest against the real API.",
+    result:
+      "Faster book and author discovery paths with integrations checked before they carried production traffic.",
+  },
+
 ];
 
 export function getProjectBySlug(slug: string) {

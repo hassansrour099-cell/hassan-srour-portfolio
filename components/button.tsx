@@ -7,6 +7,7 @@ type ButtonProps = {
   variant?: "primary" | "ghost" | "dark";
   className?: string;
   external?: boolean;
+  download?: boolean | string;
   /** Ignored: kept so leftover template call sites still typecheck */
   showAvatar?: boolean;
   containerClassName?: string;
@@ -20,12 +21,14 @@ export const Button = ({
   className,
   containerClassName,
   external,
+  download,
 }: ButtonProps) => {
   const isExternal = external ?? href.startsWith("http");
 
   return (
     <a
       href={href}
+      download={download || undefined}
       {...(isExternal
         ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}

@@ -67,6 +67,12 @@ export const Navbar = ({ className }: { className?: string }) => {
             );
           })}
           <Button
+            text="Download CV"
+            href={person.cvPath}
+            download="Hassan_Srour_CV.pdf"
+            className="min-h-9 px-4 text-xs tracking-[0.08em] uppercase"
+          />
+          <Button
             text="Email"
             href={`mailto:${person.email}`}
             className="min-h-9 px-4 text-xs tracking-[0.08em] uppercase"
@@ -121,7 +127,13 @@ export const Navbar = ({ className }: { className?: string }) => {
                   </span>
                 </Link>
               ))}
-              <div className="pt-10">
+              <div className="flex flex-col gap-3 pt-10">
+                <Button
+                  text="Download CV"
+                  href={person.cvPath}
+                  download="Hassan_Srour_CV.pdf"
+                  className="w-full"
+                />
                 <Button text="Email Hassan" className="w-full" />
               </div>
             </div>

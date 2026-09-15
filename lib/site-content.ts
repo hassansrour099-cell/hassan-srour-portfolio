@@ -123,8 +123,8 @@ export type ProjectCase = {
   result: string;
 };
 
-export const portfolioProjects: ProjectCase[
-{
+export const portfolioProjects: ProjectCase[] = [
+  {
     slug: "urban-compact",
     title: "Urban Compact",
     summary:
@@ -161,7 +161,7 @@ export const portfolioProjects: ProjectCase[
     result:
       "Live furniture storefront at https://urban.hassansrour.me/dk.",
   },
-{
+  {
     slug: "performance-street",
     title: "Performance Street",
     summary:
@@ -198,7 +198,7 @@ export const portfolioProjects: ProjectCase[
     result:
       "Live athletic apparel storefront at https://street.hassansrour.me/dk.",
   },
-{
+  {
     slug: "ngo-platforms",
     title: "NGO web platforms",
     summary:
@@ -233,7 +233,7 @@ export const portfolioProjects: ProjectCase[
     result:
       "Production NGO platforms maintained with a clear path from content change to deploy across Lebanon and the Gulf clients.",
   },
-{
+  {
     slug: "erpnext-ngo",
     title: "ERPNext for NGO operations",
     summary:
@@ -266,7 +266,7 @@ export const portfolioProjects: ProjectCase[
     result:
       "ERPNext instances in use for day-to-day NGO operational workflows.",
   },
-{
+  {
     slug: "dar-al-rafidain",
     title: "Dar Al-Rafidain e-commerce",
     summary:
@@ -303,7 +303,7 @@ export const portfolioProjects: ProjectCase[
     result:
       "A live Arabic bookstore and publishing storefront with catalog browsing and admin-driven layout control.",
   },
-{
+  {
     slug: "book-search",
     title: "Book search integrations",
     summary:

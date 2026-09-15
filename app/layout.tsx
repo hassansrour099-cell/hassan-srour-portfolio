@@ -1,29 +1,23 @@
-import { Geist_Mono, Inter, DM_Mono, Instrument_Sans } from "next/font/google";
+import { Space_Grotesk, DM_Sans, DM_Mono } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
-import { getPersonJsonLd, getSEO } from "@/lib/seo";
+import { getSEO } from "@/lib/seo";
 
 import "./globals.css";
 import { Footer } from "@/components/footer";
 
 export const metadata = getSEO();
 
-const inter = Inter({
+const display = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const instrument = Instrument_Sans({
-  subsets: ["latin"],
-  variable: "--font-instrument",
+  variable: "--font-display",
   weight: ["500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
+const body = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-geist-mono",
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
 });
 
 const DMMono = DM_Mono({
@@ -37,25 +31,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = getPersonJsonLd();
-
   return (
     <html lang="en">
       <body
         className={cn(
-          inter.variable,
-          instrument.variable,
-          geistMono.variable,
+          display.variable,
+          body.variable,
           DMMono.variable,
-          `bg-background relative font-sans antialiased`,
+          "bg-background relative font-sans antialiased",
         )}
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
         <Navbar />
-        {children}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

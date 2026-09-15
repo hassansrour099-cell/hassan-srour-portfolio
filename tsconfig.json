@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "collections/*": ["./.source/*"]
     }
   },
   "include": [
@@ -30,5 +31,23 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "components/bento-one",
+    "components/bento-two",
+    "components/testimonials",
+    "components/resources",
+    "components/products",
+    "components/pricing",
+    "components/feedbacks",
+    "components/faq",
+    "components/comparison",
+    "components/blogs",
+    "components/acebuilder",
+    "components/logo-cloud.tsx",
+    "components/header.tsx",
+    "components/kibo-ui",
+    "components/sliding-number.tsx",
+    "components/square-dots.tsx"
+  ]
 }

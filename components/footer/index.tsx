@@ -1,135 +1,96 @@
 import Link from "next/link";
-
-import { cn } from "@/lib/utils";
 import { Container } from "@/components/container";
-import {
-  ArrowRightLongerIcon,
-  CopyRightIcon,
-  GitHub,
-  LinkedIn,
-} from "@/components/icons/general";
+import { SectionLabel } from "@/components/section-label";
+import { CopyRightIcon, LinkedIn } from "@/components/icons/general";
 import { Button } from "@/components/button";
 import { Logo } from "@/components/logo";
-
 import { person, siteCopy } from "@/lib/site-content";
-
-const data = {
-  Navigate: [
-    { label: "Home", href: "/" },
-    { label: "Work", href: "/work" },
-    { label: "About", href: "/#about" },
-  ],
-  Contact: [
-    { label: "Email", href: `mailto:${person.email}` },
-    { label: "LinkedIn", href: person.linkedIn },
-    { label: "GitHub", href: person.github },
-    { label: "Phone", href: `tel:${person.phone.replace(/\s/g, "")}` },
-    { label: "Download CV", href: "/Hassan_Srour_CV.pdf" },
-  ],
-};
 
 export const Footer = () => {
   return (
-    <footer className="bg-natural-black relative overflow-hidden">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: `
-            radial-gradient(ellipse 55% 45% at 55% 10%, rgba(39,37,31,0.95), transparent 60%),
-            radial-gradient(ellipse 40% 50% at 15% 70%, rgba(255,255,255,0.06), transparent 55%)
-          `,
-        }}
-      />
-      <Container className="flex flex-col gap-30 pt-20 pb-10">
-        <div className="bg-natural-white/5 shadow-card-xl relative h-112 overflow-hidden rounded-4xl">
-          <div
-            className={cn(
-              "-tracking-xl absolute top-51 -left-3.25 justify-start text-[132px] leading-75 font-medium opacity-25 md:text-[240px] lg:text-[300px]",
-              "bg-[linear-gradient(90deg,#FFFFFF_0%,rgba(52,52,52,0)_100%)] bg-clip-text text-transparent",
-            )}
-          >
-            {person.name.split(" ")[0]}
-          </div>
-          <div className="absolute inset-0 flex h-fit w-full flex-col items-start justify-between px-6 pt-10 md:flex-row md:px-15 md:pt-16">
-            <div className="font-display text-natural-white -tracking-lg w-full max-w-135 justify-center text-[32px] font-medium md:text-5xl md:leading-14 lg:text-[56px] lg:leading-16">
+    <footer id="contact" className="scroll-mt-24 bg-natural-black text-natural-white">
+      <div aria-hidden className="h-px w-full bg-primary" />
+      <Container className="py-16 md:py-20">
+        <SectionLabel index="07" label="Contact" tone="dark" />
+        <div className="mt-8 grid gap-10 border-b border-white/12 pb-14 md:grid-cols-12 md:gap-8">
+          <div className="md:col-span-7">
+            <h2 className="max-w-xl font-display text-3xl font-semibold tracking-tight text-balance md:text-4xl">
               {siteCopy.footerCta}
+            </h2>
+            <p className="mt-4 max-w-md text-sm text-white/55">
+              {siteCopy.footerSupport}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button text="Email Hassan" variant="primary" />
+              <Button
+                text="LinkedIn"
+                href={person.linkedIn}
+                variant="ghost"
+                className="border-white/20 text-natural-white hover:border-primary hover:text-primary"
+              />
             </div>
-            <div className="flex shrink-0 flex-col items-start justify-start gap-2.5 py-6 md:py-0">
-              <Link
-                href={`mailto:${person.email}`}
-                aria-label="Email Hassan"
-                className="bg-natural-white shadow-card-md inline-flex size-14 items-center justify-center rounded-xl transition-transform duration-250 hover:scale-105"
-              >
-                <ArrowRightLongerIcon className="scale-150" />
-              </Link>
-            </div>
+            <dl className="mt-10 grid gap-4 sm:grid-cols-2">
+              <div>
+                <dt className="font-dm-mono text-[10px] tracking-[0.16em] text-white/35 uppercase">
+                  Email
+                </dt>
+                <dd className="mt-1 text-sm">
+                  <a
+                    href={`mailto:${person.email}`}
+                    className="link-underline text-white/80"
+                  >
+                    {person.email}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="font-dm-mono text-[10px] tracking-[0.16em] text-white/35 uppercase">
+                  Phone
+                </dt>
+                <dd className="mt-1 text-sm text-white/80">
+                  <a href={`tel:${person.phone.replace(/\s/g, "")}`}>
+                    {person.phone}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <div className="flex flex-col justify-between gap-8 md:col-span-5 md:items-end md:text-right">
+            <Logo dark />
+            <nav className="flex flex-wrap gap-x-6 gap-y-2 md:justify-end">
+              {[
+                { label: "Work", href: "/work" },
+                { label: "Experience", href: "/#experience" },
+                { label: "About", href: "/#about" },
+              ].map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="font-dm-mono text-xs tracking-[0.14em] text-white/50 uppercase transition-colors hover:text-primary"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
-        <div className="relative z-10 flex flex-col items-center justify-center gap-18">
-          <div className="grid w-full grid-cols-1 gap-15 lg:grid-cols-2 lg:gap-0">
-            <div className="flex flex-col gap-4">
-              <Logo light />
-              <span className="text-muted-foreground text-sm leading-5">
-                {siteCopy.tagline}
-              </span>
-              <div>
-                <Button text="Get in touch" />
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-0">
-              {Object.entries(data).map(([key, value]) => (
-                <div key={key} className="flex flex-col gap-4">
-                  <h3 className="text-muted-foreground -tracking-sm text-xs leading-5 font-medium">
-                    {key}
-                  </h3>
-                  <ul className="flex flex-col gap-4">
-                    {value.map((item, index) => (
-                      <li key={index}>
-                        <Link
-                          href={item.href}
-                          className="text-natural-white/85 -tracking-sm inline-flex min-h-11 items-center text-sm leading-5 font-medium transition-colors duration-250 hover:text-natural-white hover:underline"
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="flex w-full flex-col justify-between gap-6 md:flex-row md:items-center md:gap-0">
-            <div>
-              <span className="flex items-center gap-1">
-                <CopyRightIcon />
-                <span className="text-muted-foreground text-xs leading-5 font-medium">
-                  {new Date().getFullYear()} {person.name}
-                </span>
-              </span>
-            </div>
-            <div className="flex items-center gap-5">
-              <Link
-                href={person.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <GitHub className="text-muted-foreground hover:text-natural-white size-4 transition-colors" />
-              </Link>
-              <Link
-                href={person.linkedIn}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <LinkedIn className="text-muted-foreground hover:text-natural-white size-4 transition-colors" />
-              </Link>
-            </div>
-          </div>
+
+        <div className="flex flex-col justify-between gap-4 pt-8 sm:flex-row sm:items-center">
+          <span className="flex items-center gap-2 text-xs text-white/35">
+            <CopyRightIcon />
+            {new Date().getFullYear()} {person.name}
+          </span>
+          <Link
+            href={person.linkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-white/35 transition-colors hover:text-primary"
+            aria-label="LinkedIn profile"
+          >
+            <LinkedIn className="size-4" />
+          </Link>
         </div>
       </Container>
     </footer>
   );
 };
-

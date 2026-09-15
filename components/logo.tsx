@@ -1,41 +1,49 @@
+import Image from "next/image";
 import Link from "next/link";
-
 import { cn } from "@/lib/utils";
 import { person } from "@/lib/site-content";
 
 export const Logo = ({
   className,
-  light = false,
+  showWordmark = true,
+  dark = false,
 }: {
   className?: string;
-  /** Use light text (for dark backgrounds). */
-  light?: boolean;
+  showWordmark?: boolean;
+  dark?: boolean;
 }) => {
   return (
     <Link
       href="/"
-      aria-label={`${person.name} — home`}
       className={cn(
-        "group inline-flex items-center gap-2.5 font-medium tracking-tight",
+        "group inline-flex items-center gap-3 focus-visible:outline-offset-4",
         className,
       )}
+      aria-label={`${person.name}, home`}
     >
-      <span
-        className={cn(
-          "bg-primary text-natural-black inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold",
-          "transition-transform duration-200 group-hover:scale-105",
-        )}
-      >
-        HS
-      </span>
-      <span
-        className={cn(
-          "hidden text-sm sm:inline",
-          light ? "text-natural-white" : "text-natural-black",
-        )}
-      >
-        {person.name}
-      </span>
+      <Image
+        src={dark ? "/brand/mark-on-dark.webp" : "/brand/mark.webp"}
+        alt=""
+        width={36}
+        height={36}
+        className="size-9 object-contain"
+        priority
+      />
+      {showWordmark && (
+        <span className="hidden min-[420px]:flex flex-col leading-none">
+          <span
+            className={cn(
+              "font-display text-[13px] font-bold tracking-[0.12em] uppercase",
+              dark ? "text-natural-white" : "text-natural-black",
+            )}
+          >
+            {person.name}
+          </span>
+          <span className="mt-1 font-dm-mono text-[10px] font-medium tracking-[0.22em] text-primary uppercase">
+            {person.title}
+          </span>
+        </span>
+      )}
     </Link>
   );
 };

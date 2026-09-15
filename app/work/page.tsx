@@ -1,26 +1,30 @@
 import { getSEO } from "@/lib/seo";
 import { Container } from "@/components/container";
-import { AboutSection } from "@/components/about";
-import { PageHeader } from "@/components/page-header";
+import { SectionLabel } from "@/components/section-label";
 import { Projects } from "@/components/projects";
 
 export const metadata = getSEO({
   title: "Work",
   description:
-    "Selected projects — NGO platforms, ERPNext, and production e-commerce built with Next.js, Directus, and full-stack JavaScript.",
+    "Case studies from Hassan Srour: NGO platforms, ERPNext, Dar Al-Rafidain, book search, and Medusa.js storefronts (Urban Compact, Performance Street).",
   path: "/work",
 });
 
 const WorkPage = () => {
   return (
     <div className="max-w-screen overflow-x-hidden">
-      <Container className="relative h-38 md:h-70">
-        <PageHeader className="top-10 md:top-16 lg:top-18">Work</PageHeader>
+      <Container className="border-b border-line pt-20 pb-12 md:pt-28 md:pb-16">
+        <SectionLabel index="W" label="Archive" />
+        <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+          Selected work
+        </h1>
+        <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+          Case studies from Harmonically Labs and Brain Solutions, plus live
+          Medusa.js storefronts. Open any row for context, role, architecture,
+          decisions, and result.
+        </p>
       </Container>
-      <div className="**:data-[slot=container]:pt-0">
-        <Projects disabelHeader />
-      </div>
-      <AboutSection />
+      <Projects showHeader={false} />
     </div>
   );
 };

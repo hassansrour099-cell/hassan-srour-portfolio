@@ -1,8 +1,11 @@
+import { createMDX } from "fumadocs-mdx/next";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   turbopack: {
     root: import.meta.dirname,
   },
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
     remotePatterns: [
       {
@@ -14,4 +17,6 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+const withMDX = createMDX();
+
+export default withMDX(nextConfig);

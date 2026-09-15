@@ -4,28 +4,18 @@ import { person, siteCopy } from "@/lib/site-content";
 
 export const siteConfig = {
   name: person.name,
-  description: siteCopy.tagline,
+  description: siteCopy.heroSupport,
   // Override in production via NEXT_PUBLIC_SITE_URL.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hassansrour.me",
-  ogImage: "/assets/hassan.jpg",
+  ogImage: "/brand/mark.webp",
   twitter: person.linkedInHandle,
-  keywords: [
-    "Hassan Srour",
-    "Software Engineer",
-    "Full-stack developer",
-    "Next.js",
-    "React",
-    "Lebanon",
-    "Beirut",
-    "Web developer",
-  ],
 };
 
 export interface GetSEOOptions {
   /** Page specific title. Rendered as `${title} | ${siteName}`. Omit for the site default. */
   title?: string;
   description?: string;
-  /** Path of the page, e.g. "/work". Used for the canonical URL and og:url. */
+  /** Path of the page, e.g. "/pricing". Used for the canonical URL and og:url. */
   path?: string;
   /** Absolute or root relative OG / Twitter image. */
   image?: string;
@@ -44,12 +34,10 @@ export function getSEO({
   description = siteConfig.description,
   path = "/",
   image = siteConfig.ogImage,
-  keywords = siteConfig.keywords,
+  keywords,
   noIndex = false,
 }: GetSEOOptions = {}): Metadata {
-  const resolvedTitle = title
-    ? `${title} | ${siteConfig.name}`
-    : `${siteConfig.name} — ${person.title}`;
+  const resolvedTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
   const url = new URL(path, siteConfig.url).toString();
 
   return {
@@ -100,23 +88,5 @@ export function getSEO({
             "max-video-preview": -1,
           },
         },
-  };
-}
-
-export function getPersonJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: person.name,
-    jobTitle: person.title,
-    email: person.email,
-    telephone: person.phone,
-    url: siteConfig.url,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Beirut",
-      addressCountry: "LB",
-    },
-    sameAs: [person.linkedIn, person.github],
   };
 }

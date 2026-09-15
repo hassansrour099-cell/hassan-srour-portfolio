@@ -1,8 +1,11 @@
 import { getSEO } from "@/lib/seo";
 import { person } from "@/lib/site-content";
 import { AboutSection } from "@/components/about";
+import { ExperienceSection } from "@/components/experience";
 import { Hero } from "@/components/hero";
+import { Principles } from "@/components/principles";
 import { Projects } from "@/components/projects";
+import { SkillsStrip } from "@/components/skills-strip";
 
 export const metadata = getSEO({
   title: person.title,
@@ -11,10 +14,13 @@ export const metadata = getSEO({
 
 export default function Home() {
   return (
-    <section className="flex max-w-screen overflow-x-hidden flex-col items-center justify-center">
+    <div className="flex max-w-screen flex-col overflow-x-hidden">
       <Hero />
-      <Projects limit={4} />
+      <SkillsStrip />
+      <Principles />
+      <ExperienceSection />
+      <Projects limit={3} />
       <AboutSection />
-    </section>
+    </div>
   );
 }

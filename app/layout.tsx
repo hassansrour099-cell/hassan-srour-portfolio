@@ -2,6 +2,8 @@ import { Space_Grotesk, DM_Sans, DM_Mono } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
 import { getSEO } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
+import { personJsonLd, websiteJsonLd } from "@/lib/structured-data";
 
 import "./globals.css";
 import { Footer } from "@/components/footer";
@@ -41,6 +43,8 @@ export default function RootLayout({
           "bg-background relative font-sans antialiased",
         )}
       >
+        <JsonLd data={websiteJsonLd()} />
+        <JsonLd data={personJsonLd()} />
         <Navbar />
         <main>{children}</main>
         <Footer />

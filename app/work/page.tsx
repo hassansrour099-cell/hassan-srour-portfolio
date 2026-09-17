@@ -6,7 +6,7 @@ import { Projects } from "@/components/projects";
 export const metadata = getSEO({
   title: "Work",
   description:
-    "Case studies from Hassan Srour: NGO platforms, ERPNext, Dar Al-Rafidain, book search, and Medusa.js storefronts (Urban Compact, Performance Street).",
+    "Explore Hassan Srour's software engineering work across production ecommerce platforms, Medusa.js, Next.js, ERP systems, APIs, and AI-enabled applications.",
   path: "/work",
 });
 

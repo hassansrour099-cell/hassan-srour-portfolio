@@ -2,7 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/container";
 import { Button } from "@/components/button";
+import { JsonLd } from "@/components/json-ld";
 import { getSEO } from "@/lib/seo";
+import { projectJsonLd } from "@/lib/structured-data";
 import {
   getProjectBySlug,
   portfolioProjects,
@@ -41,6 +43,7 @@ export default async function ProjectPage({
 
   return (
     <article className="max-w-screen overflow-x-hidden">
+      <JsonLd data={projectJsonLd(project)} />
       <header className="border-b border-line bg-natural-black text-natural-white">
         <div aria-hidden className="h-px w-full bg-primary" />
         <Container className="pt-24 pb-14 md:pt-28 md:pb-16">

@@ -113,6 +113,9 @@ export type ProjectCase = {
   highlight: string;
   relatedNote?: string;
   externalHref?: string;
+  githubHref?: string;
+  seoTitle?: string;
+  seoDescription?: string;
   overview: string;
   problem: string;
   approach: string;
@@ -125,6 +128,63 @@ export type ProjectCase = {
 
 export const portfolioProjects: ProjectCase[] = [
   {
+    slug: "nexus",
+    title: "NEXUS",
+    summary:
+      "Production ecommerce platform built with Next.js and Medusa v2, with real catalog, cart, customer accounts, checkout, inventory, and VPS deployment.",
+    year: "2026",
+    type: "E-commerce / Medusa.js",
+    role: "Full-stack ecommerce platform build",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Medusa v2",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "Nginx",
+      "Contabo VPS",
+    ],
+    highlight: "Production Medusa platform",
+    externalHref: "https://nexus.hassansrour.me/dk",
+    githubHref: "https://github.com/hassansrour099-cell/nexus-store",
+    seoTitle: "NEXUS | Ecommerce Platform",
+    seoDescription:
+      "Production ecommerce platform built with Next.js, TypeScript, and Medusa v2, with real catalog, cart, customer, inventory, and production deployment workflows.",
+    relatedNote:
+      "Deployed on Contabo VPS with a separate storefront and API domain. Shares Docker/Nginx deployment patterns with Urban Compact and Performance Street.",
+    overview:
+      "NEXUS is a full-stack ecommerce platform built to demonstrate a real commerce architecture rather than a static storefront. The Next.js storefront talks to a Medusa v2 backend with PostgreSQL and Redis, deployed behind Nginx with HTTPS on a Contabo VPS.",
+    problem:
+      "A credible ecommerce portfolio piece needs a live catalog, cart, customers, checkout, and inventory wired to a real backend, not a design-only storefront.",
+    approach:
+      "Use Medusa v2 for commerce primitives (catalog, pricing, inventory, carts, customers, orders), build the storefront around that API with Next.js and TypeScript, then Dockerize and deploy behind Nginx with separate production domains for the storefront and API.",
+    architecture: [
+      "Next.js / TypeScript storefront",
+      "Medusa v2 commerce backend",
+      "PostgreSQL + Redis",
+      "Docker Compose (nexus profile)",
+      "Nginx reverse proxy + Let's Encrypt HTTPS",
+      "Contabo VPS (storefront + API domains)",
+    ],
+    implementation: [
+      "Storefront architecture in Next.js and TypeScript against Medusa v2.",
+      "Medusa-backed catalog with categories, collections, variants, and inventory states (38 active production products).",
+      "Search, filtering, sorting, pagination, and product detail pages.",
+      "Real cart, checkout (Medusa system/manual payment provider), customer auth, accounts, addresses, and orders.",
+      "Cookie-based wishlist behavior and responsive storefront UI with loading, empty, error, and 404 states.",
+      "Production PostgreSQL and Redis, Dockerized services, Nginx routing, and HTTPS with Let's Encrypt.",
+      "Separate production domains: nexus.hassansrour.me (storefront) and api-nexus.hassansrour.me (API).",
+      "End-to-end production verification before declaring the deployment complete.",
+    ],
+    challenges:
+      "Keeping NEXUS isolated from Urban Compact and Performance Street while still reusing shared Docker/Nginx deployment infrastructure, and verifying the full stack in production while limiting checkout to the payment provider that is actually configured.",
+    decisions:
+      "Separate storefront concerns from commerce/backend concerns. Keep Medusa responsible for catalog, pricing, inventory, carts, customers, and orders. Prefer Docker and Nginx for reproducible VPS deployment. Use Medusa's system/manual payment provider for the current deployment rather than a card processor that is not wired up.",
+    result:
+      "A publicly accessible production ecommerce platform at https://nexus.hassansrour.me/dk with a live Medusa API, real commerce flows, and Contabo VPS deployment.",
+  },
+  {
     slug: "urban-compact",
     title: "Urban Compact",
     summary:
@@ -136,7 +196,7 @@ export const portfolioProjects: ProjectCase[] = [
     highlight: "Live storefront",
     externalHref: "https://urban.hassansrour.me/dk",
     relatedNote:
-      "Related Medusa.js storefront: Performance Street.",
+      "Related Medusa.js storefronts: NEXUS (flagship platform) and Performance Street.",
     overview:
       "Urban Compact is a live Medusa.js e-commerce storefront for furniture. The public site presents room-based browsing (Living, Sleep, Work, Storage, Collection), featured pieces, and material messaging around oak, linen, and steel.",
     problem:
@@ -173,7 +233,7 @@ export const portfolioProjects: ProjectCase[] = [
     highlight: "Live storefront",
     externalHref: "https://street.hassansrour.me/dk",
     relatedNote:
-      "Related Medusa.js storefront: Urban Compact.",
+      "Related Medusa.js storefronts: NEXUS (flagship platform) and Urban Compact.",
     overview:
       "Performance Street is a live Medusa.js e-commerce storefront for athletic apparel. The public site is organized around Training, Running, and Recovery, with product listings and kit-oriented browse paths.",
     problem:

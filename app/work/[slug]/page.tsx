@@ -24,8 +24,8 @@ export async function generateMetadata({
   const project = getProjectBySlug(slug);
   if (!project) return { title: "Project not found" };
   return getSEO({
-    title: project.title,
-    description: project.summary,
+    title: project.seoTitle ?? project.title,
+    description: project.seoDescription ?? project.summary,
     path: `/work/${project.slug}`,
   });
 }
@@ -131,6 +131,15 @@ export default async function ProjectPage({
                   className="w-fit"
                 />
               )}
+              {project.githubHref && (
+                <Button
+                  text="View on GitHub"
+                  href={project.githubHref}
+                  variant="ghost"
+                  external
+                  className="w-fit"
+                />
+              )}
               <Button
                 text="Email about this work"
                 href={`mailto:${person.email}?subject=${encodeURIComponent(`About ${project.title}`)}`}
@@ -190,21 +199,53 @@ export default async function ProjectPage({
             >
               ← All work
             </Link>
+            {project.slug === "nexus" && (
+              <>
+                <Link
+                  href="/work/urban-compact"
+                  className="link-underline font-dm-mono text-xs tracking-[0.14em] uppercase"
+                >
+                  Related: Urban Compact
+                </Link>
+                <Link
+                  href="/work/performance-street"
+                  className="link-underline font-dm-mono text-xs tracking-[0.14em] uppercase"
+                >
+                  Related: Performance Street
+                </Link>
+              </>
+            )}
             {project.slug === "urban-compact" && (
-              <Link
-                href="/work/performance-street"
-                className="link-underline font-dm-mono text-xs tracking-[0.14em] uppercase"
-              >
-                Related: Performance Street
-              </Link>
+              <>
+                <Link
+                  href="/work/nexus"
+                  className="link-underline font-dm-mono text-xs tracking-[0.14em] uppercase"
+                >
+                  Related: NEXUS
+                </Link>
+                <Link
+                  href="/work/performance-street"
+                  className="link-underline font-dm-mono text-xs tracking-[0.14em] uppercase"
+                >
+                  Related: Performance Street
+                </Link>
+              </>
             )}
             {project.slug === "performance-street" && (
-              <Link
-                href="/work/urban-compact"
-                className="link-underline font-dm-mono text-xs tracking-[0.14em] uppercase"
-              >
-                Related: Urban Compact
-              </Link>
+              <>
+                <Link
+                  href="/work/nexus"
+                  className="link-underline font-dm-mono text-xs tracking-[0.14em] uppercase"
+                >
+                  Related: NEXUS
+                </Link>
+                <Link
+                  href="/work/urban-compact"
+                  className="link-underline font-dm-mono text-xs tracking-[0.14em] uppercase"
+                >
+                  Related: Urban Compact
+                </Link>
+              </>
             )}
             {project.slug === "dar-al-rafidain" && (
               <Link
